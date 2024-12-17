@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сума цифр</title>
+</head>
+<body>
+    <input id="num" type="text" value="" placeholder="число">
+    <p id="result"></p>
+
+    <script>
+        // Отримуємо елемент input
+        const input = document.getElementById("num");
+        const result = document.getElementById("result");
+
+        // Додаємо обробник події blur (втрата фокусу)
+        input.addEventListener("blur", function() {
+            const value = input.value; // Отримуємо значення з input
+            let sum = 0;
+
+            // Перевіряємо, чи значення є числом
+            if (!isNaN(value) && value.trim() !== "") {
+                // Обчислюємо суму цифр
+                for (const digit of value) {
+                    if (!isNaN(digit) && digit !== " ") {
+                        sum += parseInt(digit, 10);
+                    }
+                }
+                result.textContent = `Сума цифр: ${sum}`;
+            } else {
+                result.textContent = "Будь ласка, введіть коректне число!";
+            }
+        });
+    </script>
+</body>
+</html>
